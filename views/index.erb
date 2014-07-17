@@ -8,8 +8,11 @@
 			<input type="text" name="nameFilm">
 			<input type="submit" name="submitFilm">
 		</form>
-		<% @arrayPoster.each do |poster|%>
-			<img class="poster" src=<%=poster %>>
+		<%if @arrayPoster %>
+		<h1>hola</h1>
+			<% @arrayPoster.each do |poster|%>
+				<img class="poster" src=<%=poster %>>
+			<% end %>
 		<% end %>
 	</body>
 </html>

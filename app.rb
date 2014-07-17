@@ -16,18 +16,11 @@ get '/' do
 end
 
 post '/' do 
-	@arrayPoster=[]
+	@arrayPoster = []
 	@nameFilm = params[:nameFilm]
-	i = Imdb::Search.new(@nameFilm)
-	
-	 arrayFilms = i.movies.take(9)
-	 arrayFilms.each do |item|
-	 	if item.poster
-	 		@arrayPoster << item.poster
-	 	end
-	 end
-
-	
+	movie_database = CallImbd.new(@nameFilm)
+	movie_poster = MoviePoster.new(movie_database)
+	@arrayPoster = movie_poster.for
 	erb :index
 end
 
