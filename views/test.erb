@@ -1,4 +1,4 @@
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +11,6 @@
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-     <link href="css/style.css" rel="stylesheet">
   </head>
   <body>
 
@@ -20,26 +19,16 @@
       <div class="page-header">
         <h1>Funny Movie Game</h1>
       </div>
-      <div class="col col-lg-4">
-      </div>
-      <div class="col col-lg-4">
-         <form class="form-inline" role="form">
-		  <div class="form-group">
-		    <input type="text" class="form-control" id="exampleInputEmail1" name="submitFilm" placeholder="Enter movie">
-		  </div>
-		  <button type="submit" class="btn btn-primary">Submit</button>
-		</form>
-	  </div>
-	  <div class="col col-lg-12">
+         <form action="" method="post" name="formFilmName">
+          <input type="text" name="nameFilm">
+          <input type="submit" name="submitFilm">
+        </form>
         <%if @arrayPoster %>
-        <div class="poster">
           <% @arrayPoster.each do |poster|%>
-            <img class="img-circle" src=<%=poster %>>
+            <img class="poster" src=<%=poster %>>
           <% end %>
         <% end %>
-        <div>
       </div>
-    </div>
 
     <div class="footer">
       <div class="container">

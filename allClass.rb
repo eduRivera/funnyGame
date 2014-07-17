@@ -6,14 +6,14 @@ class CallImbd
 	end
 	
 	def poster
-		# i = Imdb::Search.new(@nameFilm)
-		# posters = []
-		# movies = i.movies.take(50)
-		# movies.each do |movie|
-		# 	posters << movie.poster
-		# end
-		# posters
-		posters = ["http://lorempixel.com/500/500/", "http://lorempixel.com/500/500/", "http://lorempixel.com/500/500/","http://lorempixel.com/500/500/","http://lorempixel.com/500/500/","http://lorempixel.com/500/500/","http://lorempixel.com/500/500/","http://lorempixel.com/500/500/","http://lorempixel.com/500/500/" ]
+		i = Imdb::Search.new(@nameFilm)
+		posters = []
+		movies = i.movies.take(20)
+		movies.each do |movie|
+			posters << movie.poster
+		end
+		posters
+		#posters = ["http://lorempixel.com/300/300/", "http://lorempixel.com/300/300/", "http://lorempixel.com/300/300/","http://lorempixel.com/300/300/","http://lorempixel.com/300/300/","http://lorempixel.com/300/300/","http://lorempixel.com/300/300/","http://lorempixel.com/300/300/","http://lorempixel.com/300/300/" ]
 	end
 end
 
