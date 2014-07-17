@@ -4,15 +4,15 @@ describe "Poster" do
 	before :each do
 	end
     it "if is it null return null" do
-    	imdbReturn = nil
+    	imdbReturn = [nil]
     	imdbSearch = double ("ImdbFals")
     	imdbSearch.stub(:poster).and_return(imdbReturn)
         poster = MoviePoster.new(imdbSearch)
-    	expect(poster.for).to eq(nil)
+    	expect(poster.for).to eq([])
     end
 
     it "if is it have a URL return URL" do
-    	imdbReturn = "http://"
+    	imdbReturn = ["http://"]
     	imdbSearch = double ("ImdbFals")
     	imdbSearch.stub(:poster).and_return(imdbReturn)
         poster = MoviePoster.new(imdbSearch)
@@ -24,6 +24,13 @@ describe "Poster" do
     	imdbSearch = double ("ImdbFals")
     	imdbSearch.stub(:poster).and_return(imdbReturn)
         poster = MoviePoster.new(imdbSearch)
-    	expect(poster.for).to eq("http://")
+    	expect(poster.for).to eq(["http://"])
+    end
+    it "if is it have to much value with someone null, return 3 url" do
+        imdbReturn = [nil, "http://","http://",nil,"http://","http://",nil]
+        imdbSearch = double ("ImdbFals")
+        imdbSearch.stub(:poster).and_return(imdbReturn)
+        poster = MoviePoster.new(imdbSearch)
+        expect(poster.for).to eq(["http://","http://","http://"])
     end
 end

@@ -1,14 +1,30 @@
+require 'pry'
+
+class CallImbd
+	
+end
 class MoviePoster
+
 	def initialize(imdb_api)
 		@imdb_api = imdb_api
+		@arrayPostersClean = []
+		@numberOfPoster = 3
 	end
 
 	def for 
-		@arrayMovies = []
-		if @imdb_api.poster != nil
-			@arrayMovies << @imdb_api.poster
-		end
+		clean_null_posters(@imdb_api.poster)
+	end
 
+	def clean_null_posters(arrayPoster)
+		arrayPoster.each do |poster|
+			if poster != nil
+				@arrayPostersClean << poster
+				if @arrayPostersClean.length == @numberOfPoster
+					return @arrayPostersClean
+				end
+			end
+		end
+		@arrayPostersClean
 	end
 
 end
