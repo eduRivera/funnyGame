@@ -3,22 +3,32 @@ require 'sinatra'
 require 'pry'
 require 'json'
 require 'imdb'
+require_relative './allClass'
 
-i = Imdb::Search.new("Star Trek")
 
-i.movies.size
+
+store = PStore.new("data.pstore")
 
 ######################INDEX.erb################################
 
 get '/' do 
-	@movieSize = i.movies.size
-	#select(store)#-->method donde se seleccionan las variables que hay guardada en la  list del store, se utiliza una transaccion para que no se ejecuten cosas a medias
 	erb :index
 end
 
 post '/' do 
-	#insert(params[:text1], store)#-->method donde se insertan las variables a la list del store, se utiliza una transaccion para que no se ejecuten cosas a medias
-	redirect to('/')
+	@arrayPoster=[]
+	@nameFilm = params[:nameFilm]
+	i = Imdb::Search.new(@nameFilm)
+	
+	 arrayFilms = i.movies.take(9)
+	 arrayFilms.each do |item|
+	 	if item.poster
+	 		@arrayPoster << item.poster
+	 	end
+	 end
+
+	
+	erb :index
 end
 
 #####################FUNCTIONS################################

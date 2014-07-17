@@ -1,9 +1,15 @@
 <html>
 	<head>
+		<link href="css/style.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
 		<h1>Funny Movie Game</h1>
-		<form></form>
-		<h1><%= @movieSize %></h1>
+		<form action="" method="post" name="formFilmName">
+			<input type="text" name="nameFilm">
+			<input type="submit" name="submitFilm">
+		</form>
+		<% @arrayPoster.each do |poster|%>
+			<img class="poster" src=<%=poster %>>
+		<% end %>
 	</body>
 </html>
